@@ -1,14 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BossHealth : MonoBehaviour
 {
 
 	public int health = 20;
 	public int enragedHp = 30;
-
-	public GameObject deathEffect;
 
 	public bool isInvulnerable = false;
 
@@ -30,9 +29,10 @@ public class BossHealth : MonoBehaviour
 		}
 	}
 
+    [ContextMenu("Kill")]
 	void Die()
 	{
 		Destroy(gameObject);
-	}
-
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
 }
